@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>MatchMiles - Help Page</title>
+        <link rel="stylesheet" href="MatchMiles.css">
+        <script src='MatchMiles.js' defer> </script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    </head>
+
+    <body>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="MatchMiles_HomePage.html">Home</a></li>
+                <li><a href="MatchMiles_FindHangout.html">Find Hangout</a></li>
+                <li><a href="MatchMiles_HelpPage.html">Help</a></li>
+            </ul>
+        </nav>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Rotating_globe.gif" class="end-globe">
+        
+        <div class="help-section">
+            <div class="left-help-section">
+                <h2 id="faq-text">FAQs</h2>
+                <div class="faqs">
+                    <div class="dropdown">
+                        <span>▼ How to use MatchMiles? </span>
+                        <div class="dropdown-content">
+                        <p>Navigate to the "Find Hangout" Page and type in three locations</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="dropdown">
+                        <span>▼ Is MatchMiles just for users in the United States?</span>
+                        <div class="dropdown-content">
+                        <p>Yes, MatchMiles is currently only available for users in the United States.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="right-help-section">
+                <div class="contact">
+                    
+                    <div class="contact-form">
+                        <h2>Contact Us!</h2>
+                        <form>
+                            <label for="name"> Name: </label>
+                            <input type = "text" id="name" required>
+                            <br>
+                            <label for="email"> Email: </label>
+                            <input type = "text" id="email" required>
+                            <br>
+                            <label for="Message"> Message: </label>
+                            <input type = "text" id="message" required>
+                        <br>
+                            <button type="submit" id="sendButton" onclick="sprinkleConfetti()">Send</button>
+                        
+                        </form>   
+                    </div>    
+                </div>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <footer id="footer">
+            <p> Copyright of Maryanne Amanze </p>
+        </footer>
+    </body>
+</html>

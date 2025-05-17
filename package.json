@@ -2,9 +2,10 @@
   "name": "inst377_final-project-matchmiles",
   "version": "1.0.0",
   "description": "**MatchMiles** – Find the best spot to meet up with friends based on everyone's location.",
-  "main": "MatchMiles.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon -e '*'",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +21,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
     "body-parser": "^2.2.0",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "nodemon": "^3.1.10"
   }

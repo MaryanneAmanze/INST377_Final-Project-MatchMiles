@@ -1,5 +1,5 @@
 function createMap() {
-    var map = L.map('map').setView([0, 0], 13);
+    var map = L.map('map');
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -25,22 +25,101 @@ function createMap() {
       }
 }
 
-document.getElementById("sendButton").addEventListener("click", sprinkleConfetti);
+function populateDatabase() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
 
-function sprinkleConfetti(event)
-{
-    //document.getElementById("sendButton").addEventListener("click", function () {
-        // Optional: Do your send logic here
+  fetch('/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, message })
+  });
 
-        event.preventDefault(); //the confetti keeps loading for a short period of time
-    
-        // Confetti burst
-        confetti({
-          particleCount: 150,
-          spread: 70,
-          origin: { y: 0.8 }
-        });
-    //  });
+  
+  sprinkleConfetti();
+
+  // confetti not fully sprinkling before page reload
+  setTimeout(() => {
+    window.location.reload();
+  }, 15000);
 }
 
+function sprinkleConfetti() {
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.8 }
+  });
+}
 
+async function getCoordinates(address) {
+    const res = await fetch(`/api/geocode?address=${encodeURIComponent(address)}`);
+    const data = await res.json();
+
+    if (data.status === "OK") {
+        return data.results[0].geometry.location;
+    } else {
+        console.error("Error getting coordinates for:", address);
+        throw new Error(data.status);
+    }
+}
+
+function getMidpoint(coords) {
+    const lat = (coords[0].lat + coords[1].lat + coords[2].lat) / 3;
+    const lng = (coords[0].lng + coords[1].lng + coords[2].lng) / 3;
+    return { lat, lng };
+}
+
+async function getNearbyPlaces(midpoint) {
+    const res = await fetch(`/api/places?lat=${midpoint.lat}&lng=${midpoint.lng}`);
+    const data = await res.json();
+
+    if (data.status === "OK") {
+        return data.results;
+    } else {
+        console.log("Error getting nearby places");
+    }
+}
+
+function displayPlaces(places) {
+    const container = document.getElementById("suggested-box");
+    container.innerHTML = "";
+
+    if (places.length === 0) {
+        container.textContent = "No spots found nearby.";
+        return;
+    }
+
+    places.forEach(place => {
+        const div = document.createElement("div");
+        div.classList.add("place-item");
+
+        div.innerHTML =
+        `${place.name}<br>
+        <em>Address:</em> ${place.vicinity}
+        `;
+        container.appendChild(div);
+    });
+}
+
+async function handleFindHangout() {
+        const loc1 = document.getElementById("location-1").value;
+        const loc2 = document.getElementById("location-2").value;
+        const loc3 = document.getElementById("location-3").value;
+
+        const coords = await Promise.all([
+            getCoordinates(loc1),
+            getCoordinates(loc2),
+            getCoordinates(loc3)
+        ]);
+
+        const midpoint = getMidpoint(coords);
+        const nearbyPlaces = await getNearbyPlaces(midpoint);
+        //console.log(nearbyPlaces);
+        displayPlaces(nearbyPlaces);
+
+        document.getElementById("suggested-area").style.display = "block";
+
+}
+//document.querySelector("button").addEventListener("click", handleFindHangout);

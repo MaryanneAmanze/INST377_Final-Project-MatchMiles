@@ -16,10 +16,10 @@
 
         <h2 id="find-spot-text">Let's find your next hangout spot!</h2>
         <br>
-            <div class="location-box">
-                <h2 id="faq-text">Enter locations...</h2>
-                <div class="input-area">
-                    <form action="MatchMiles_Locations.html">
+        <div class="location-box">
+            <h2 id="faq-text">Enter locations...</h2>
+            <div class="input-area">
+                <form>
                         <label for="location-1"> Location 1: </label>
                         <input type = "text" id="location-1" required>
                         <br>
@@ -31,14 +31,23 @@
         
                     
                     <br>
-                    <button type="submit">Go</button>
-                    </form>    
-
-                </div>
-                
-
+                    <button type="button" onclick="handleFindHangout()">Go</button>
+                </form>    
             </div>
+        </div>
+        <br>
+        <div id="suggested-area" style="display: none;">
+            <h2 id="find-spot-text">Here are some fun spots!</h2>
+            <div class="location-box">
+                <h2 id="faq-text">Suggested Locations 📍</h2>
+                <div class="input-area">
+                    <div id="suggested-box">
 
-
+                    </div>
+                    <button type="button" onclick="window.location.href='MatchMiles_HomePage.html'">Take Me Home!</button>
+                </div>
+            </div>
+        </div>
+        
     </body>
 </html>

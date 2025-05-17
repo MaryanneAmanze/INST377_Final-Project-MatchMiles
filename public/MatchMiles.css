@@ -174,7 +174,7 @@ body{
     display: inline-block;
   }
   
-  .dropdown-content {
+.dropdown-content {
     display: none;
     position: absolute;
     background-color:rgb(11, 148, 11) ;
@@ -218,3 +218,11 @@ body{
 }
 
 #map { height: 180px; }
+
+.place-item {
+    margin: 10px;
+    background-color: rgb(11, 148, 11);
+    color: bisque;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,1);
+}

@@ -60,8 +60,7 @@ async function getCoordinates(address) {
     if (data.status === "OK") {
         return data.results[0].geometry.location;
     } else {
-        console.error("Error getting coordinates for:", address);
-        throw new Error(data.status);
+      alert("Error getting coordinates");
     }
 }
 

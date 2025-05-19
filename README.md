@@ -1,4 +1,5 @@
 ## Project Title
+
 **MatchMiles 🌍** – Find the best spot to meet up with friends based on everyone's location.
 
 **Author** - Maryanne Amanze
@@ -22,6 +23,10 @@ A guide for developers want to use or build on MatchMiles.
 - Leaflet.js - https://leafletjs.com/index.html 
 - Canvas Confetti - https://github.com/catdad/canvas-confetti 
 
+## Others:
+- Deployment - Vercel - https://inst-377-final-project-match-miles.vercel.app/
+- Database - Supabase
+
 ## APIs used:
 - Google Maps Geocoding API - https://developers.google.com/maps/
 - Google Maps Places API - https://developers.google.com/maps/
@@ -37,27 +42,26 @@ Query parameters:
 lat – latitude
 lng – longitude
 Response: List of nearby places (name, type, vicinity)
-- POST /api/contact
+- POST /api/contact...
 Used to submit a message from the contact form. This sends data to the messages table in Supabase.
-Response:
-Adds a row in the MatchMiles database in Supabase.
+Response: Adds a row in the MatchMiles database in Supabase with the information entered.
 
+### How to Install
+
+1. **Install Prerequisites**
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
+- [Git](https://git-scm.com/)
+
+2. **Clone the repository and have fun!**
+
+   git clone https://github.com/your-username/INST377_Final-Project-MatchMiles.git
+  
+## Future Roadmap
+- Add dropdown to filter results by category (e.g. only restaurants)
+- Allow 2 or more users to share a link to collaborate in real time
 
 ## Notes
 - When you accept for location to be used, it takes time to load your accurate location.
 
 
-
-
-
-
-## Others:
-- Deployment - Vercel
-- Database - Supabase
-
-### How to Install
-
-1. **Clone the repository and have fun!**
-
-   git clone https://github.com/your-username/INST377_Final-Project-MatchMiles.git
-  
